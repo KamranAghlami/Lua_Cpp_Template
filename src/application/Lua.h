@@ -19,6 +19,16 @@ public:
         return lua;
     }
 
+    int run_string(const std::string &str)
+    {
+        int ret = luaL_dostring(mp_state, str.c_str());
+
+        if (ret)
+            printf("%s\n", lua_tostring(mp_state, -1));
+
+        return ret;
+    }
+
     int run_script(const std::string &path)
     {
         int ret = luaL_dofile(mp_state, path.c_str());
