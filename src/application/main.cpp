@@ -1,6 +1,6 @@
-#include "LuaInterpreter.h"
+#include "Lua.h"
 
 int main()
 {
-    return LuaInterpreter::get().run_script("../src/lua/main.lua");
+    return Lua::get().run_script("../src/lua/main.lua");
 }

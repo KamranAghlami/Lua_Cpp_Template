@@ -9,14 +9,14 @@ extern "C"
 #include "lualib.h"
 }
 
-class LuaInterpreter
+class Lua
 {
 public:
-    static LuaInterpreter &get()
+    static Lua &get()
     {
-        static LuaInterpreter interpreter;
+        static Lua lua;
 
-        return interpreter;
+        return lua;
     }
 
     int run_script(const std::string &path)
@@ -30,12 +30,12 @@ public:
     }
 
 private:
-    LuaInterpreter() : mp_state(luaL_newstate())
+    Lua() : mp_state(luaL_newstate())
     {
         luaL_openlibs(mp_state);
     }
 
-    ~LuaInterpreter()
+    ~Lua()
     {
         lua_close(mp_state);
     }
